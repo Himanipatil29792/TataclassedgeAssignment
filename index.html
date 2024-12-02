@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: tomato;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+  place-items: center;
+}
+
+.number-lines {
+  width: 80%;
+  max-width: 60em;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em 2em 2em;
+  background: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  border-radius: 1em;
+
+  h2 {
+    margin: 0.5em 0 0.5em 0;
+    padding-bottom: 1em;
+    color: rgb(30, 32, 34);
+    text-align: center;
+    position: relative;
+    font-style: italic;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      border-bottom: 2px dashed rgb(30, 32, 34);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        rgb(30 32 34/50%),
+        transparent
+      );
+    }
+  }
+}
+
+.number-line {
+  width: 100%;
+  height: 5em;
+  position: relative;
+  --child: 3;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 0.8em;
+    height: 0.8em;
+    background: rgb(30, 32, 34);
+    position: absolute;
+    top: 50%;
+    clip-path: polygon(59% 28%, 100% 50%, 58% 72%, 0% 100%, 25% 50%, 0% 0%);
+  }
+
+  &::before {
+    left: 0;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &::after {
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  & ul {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    place-items: center;
+    list-style: none;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: rgb(30, 32, 34);
+      position: absolute;
+    }
+
+    li {
+      width: 100%;
+      height: 20%;
+      border-right: 2px solid rgb(30, 32, 34);
+      position: relative;
+    
+
+      &.curve::before {
+        content: "";
+        width: 100%;
+        height: 200%;
+        position: absolute;
+        bottom: -50%;
+        left: 102%;
+        border-radius: 50% 50% 0 0;
+        border-top: 2px solid rgb(30, 32, 34);
+      }
+
+      &.arrow::after {
+        content: "";
+        width: 0.6em;
+        height: 0.6em;
+        position: absolute;
+        background: rgb(30, 32, 34);
+        top: -20%;
+        right: -2.5%;
+        transform: rotate(55deg);
+        clip-path: polygon(59% 28%, 100% 50%, 58% 72%, 0% 100%, 25% 50%, 0% 0%);
+      }
+
+      & span {
+        position: absolute;
+        font-weight: 600;
+        top: calc(100% + 0.25em);
+        left: 100%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+button.resetBtn {
+    padding: 5px 10px;
+    float: right;
+    margin-top: 15px;
+    background: lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="number-lines">
+      <h2>Number Lines</h2>
+      <div class="number-line">
+        <ul>
+          <li><span>-11</span></li>
+          <li id="myDIV" class="myLink curve"><span>-10</span></li>
+          <li id="myDIV1" class="myLink curve"><span>-9</span></li>
+          <li class="curve"><span>-8</span></li>
+          <li class="curve"><span>-7</span></li>
+          <li class="curve"><span>-6</span></li>
+          <li class="curve"><span>-5</span></li>
+          <li class="curve"><span>-4</span></li>
+          <li class="curve"><span>-3</span></li>
+          <li class="curve"><span>-2</span></li>
+          <li class="curve"><span>-1</span></li>
+          <li class="curve"><span style="color: rgb(235, 19, 19); font-weight: 700;">0</span></li>
+          <li class="curve"><span>1</span></li>
+          <li class="curve"><span>2</span></li>
+          <li class="curve"><span>3</span></li>
+          <li class="curve"><span>4</span></li>
+          <li class="curve"><span>5</span></li>
+          <li class="curve"><span>6</span></li>
+          <li class="curve"><span>7</span></li>
+          <li class="curve"><span>8</span></li>
+          <li class="curve"><span>9</span></li>
+          <li class="curve"><span>10</span></li>
+          <li><span>11</span></li>
+          <li><span>12</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <button class="resetBtn">Reset</button>
+      </div>
+    
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./sketch.js"></script>
+</body>
+</html>
